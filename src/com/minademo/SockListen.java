@@ -2,14 +2,11 @@ package com.minademo;
 
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.charset.Charset;
 
 /**
  * Created by benson on 17-1-24.
@@ -32,8 +29,11 @@ public class SockListen {
             //添加日志记录
             mAcceptor.getFilterChain().addLast("logger",new LoggingFilter());
             //添加编码解码器
-            mAcceptor.getFilterChain().addLast("codec",new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"),)));
+           // mAcceptor.getFilterChain().addLast("codec",new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"),)));
             //添加处理器(用于接收数据后处理处理数据逻辑)
+
+            //新加的一行
+
             mAcceptor.setHandler( new SockHandler() );
             //设置读取数据缓存单位byte
             mAcceptor.getSessionConfig().setReadBufferSize(2048 );
