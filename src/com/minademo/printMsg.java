@@ -7,6 +7,6 @@ package com.minademo;
 public class printMsg {
 
     public static void print() {
-        System.out.println("test");
+        System.out.println("zapierTest");
     }
 }
